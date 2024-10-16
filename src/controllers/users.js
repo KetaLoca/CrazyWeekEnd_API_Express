@@ -20,7 +20,7 @@ export class UserController {
 
         await UserModel.create(result.data)
 
-        res.status(201).json(result)
+        res.status(201).json(result.data)
     }
 
     static update = async (req, res) => {
