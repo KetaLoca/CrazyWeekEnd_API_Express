@@ -11,6 +11,6 @@ export function validateUser(object) {
     return userSchema.safeParse(object)
 }
 
-export function validatePartialMovie(object) {
+export function validatePartialUser(object) {
     return userSchema.partial().safeParse(object)
 }
