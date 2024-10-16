@@ -1,0 +1,13 @@
+### recuperar usuario por ID
+GET http://localhost:3000/users/31213113
+
+### postear usuario
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+"email": "xesuspb@gmail.com",
+"nombre": "Jesús",
+"apellidos": "Bañobre",
+"telefono": 647736793
+}

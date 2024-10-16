@@ -1,5 +1,5 @@
-import { UserModel } from "../models/users";
-import { validateUser, validatePartialUser } from "../schemas/user";
+import { UserModel } from "../models/users.js";
+import { validateUser, validatePartialUser } from "../schemas/user.js";
 
 export class UserController {
 
@@ -29,7 +29,7 @@ export class UserController {
             return res.status(400).json({ message: JSON.parse(result.error.message) })
         }
         const { id } = req.params
-        
+
         await UserModel.update(id, result.data)
 
         res.json({ message: 'Datos de usuario modificados correctamente' })
