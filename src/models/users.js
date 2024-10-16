@@ -10,7 +10,7 @@ export class UserModel {
 
     }
 
-    static update = async (input) => {
+    static update = async (id, input) => {
 
     }
 
