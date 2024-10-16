@@ -6,15 +6,15 @@ export class UserModel {
 
     }
 
-    static create = async (req, res) => {
+    static create = async (input) => {
 
     }
 
-    static update = async (req, res) => {
+    static update = async (input) => {
 
     }
 
-    static delete = async (req, res) => {
+    static delete = async (id) => {
 
     }
 }
