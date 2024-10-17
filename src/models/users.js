@@ -7,7 +7,7 @@ export class UserModel {
     }
 
     static create = async (input) => {
-
+        
     }
 
     static update = async (id, input) => {

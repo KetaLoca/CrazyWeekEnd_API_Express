@@ -4,9 +4,11 @@ export default {
         client: 'pg',
         connection: {
             host: 'localhost',
+            port: 5432,
             user: 'postgres',
             password: '$Logitech321',
-            database: 'postgres'
+            database: 'postgres',
+            searchPath: ['CrazyWeekEnd']
         }
     },
     production: {
