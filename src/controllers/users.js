@@ -18,6 +18,11 @@ export class UserController {
             return res.status(400).json({ message: JSON.parse(result.error.message) })
         }
 
+        const user = await UserModel.getById(result.data.email)
+        if (user) {
+            return res.status(409).json({ message: 'User already exists' })
+        }
+
         await UserModel.create(result.data)
 
         res.status(201).json(result.data)
