@@ -1,5 +1,5 @@
 ### recuperar usuario por ID
-GET http://localhost:3000/users/31213113
+GET http://localhost:3000/users/xesuspb@gmail.com
 
 ### postear usuario
 POST http://localhost:3000/users

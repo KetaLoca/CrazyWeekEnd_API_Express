@@ -1,7 +1,15 @@
 import knex from "knex";
-import knexconfig from "./knexconfig.js";
 
-const environment = procces.env.NODE_ENV || 'development';
-const db = knex(knexconfig(environment));
+const db = knex({
+    client: 'pg',
+    connection: {
+        host: 'localhost',
+        port: '5432',
+        user: 'postgres',
+        password: '$Logitech321',
+        database: 'postgres',
+        searchPath: ['CrazyWeekEnd']
+    }
+})
 
 export default db;
