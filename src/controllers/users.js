@@ -33,11 +33,21 @@ export class UserController {
         if (result.error) {
             return res.status(400).json({ message: JSON.parse(result.error.message) })
         }
+
         const { id } = req.params
+        const comprobar = await UserModel.getById(id)
+        if (!comprobar) {
+            return res.status(404).json({ message: 'User not found' })
+        }
 
         await UserModel.update(id, result.data)
+            .then(() => {
+                res.json({ message: 'Datos de usuario modificados correctamente' })
+            })
+            .catch((e) => {
+                res.json({ message: 'Error modificando el usuario' })
+            })
 
-        res.json({ message: 'Datos de usuario modificados correctamente' })
     }
 
     static delete = async (req, res) => {

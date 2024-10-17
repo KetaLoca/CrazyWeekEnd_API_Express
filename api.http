@@ -11,3 +11,14 @@ Content-Type: application/json
 "apellidos": "Bañobre",
 "telefono": 647736793
 }
+
+### actualizar usuario
+PATCH http://localhost:3000/users/xesuspb@gmail.com
+Content-Type: application/json
+
+{
+    "email": "xesuspb@gmail.com",
+    "nombre": "Anfgetas",
+    "apellidos": "Cósmicas",
+    "telefono": 231313123
+}

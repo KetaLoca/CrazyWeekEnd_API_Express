@@ -13,8 +13,10 @@ export class UserModel {
         return result
     }
 
-    static update = async (id, input) => {
-
+    static update = async (email, input) => {
+        const result = await db('CrazyWeekEnd.users').where('email', email).update(input).returning('*')
+        console.log(result)
+        return result
     }
 
     static delete = async (id) => {
