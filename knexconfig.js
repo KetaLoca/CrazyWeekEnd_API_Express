@@ -1,6 +1,5 @@
-const { Pool } = require("pg");
 
-module.exports = {
+export default {
     development: {
         client: 'pg',
         connection: {
