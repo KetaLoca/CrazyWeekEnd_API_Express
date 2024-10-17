@@ -18,7 +18,10 @@ Content-Type: application/json
 
 {
     "email": "xesuspb@gmail.com",
-    "nombre": "Anfgetas",
+    "nombre": "Anfetas",
     "apellidos": "Cósmicas",
     "telefono": 231313123
 }
+
+### eliminar usuario
+DELETE  http://localhost:3000/users/xesuspb@gmail.com

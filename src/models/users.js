@@ -8,18 +8,22 @@ export class UserModel {
     }
 
     static create = async (input) => {
-        const result = await db('CrazyWeekEnd.users').insert(input).returning('email')
-        console.log(result)
+        const result = await db('CrazyWeekEnd.users').insert(input).returning('*')
         return result
     }
 
     static update = async (email, input) => {
         const result = await db('CrazyWeekEnd.users').where('email', email).update(input).returning('*')
-        console.log(result)
         return result
     }
 
-    static delete = async (id) => {
-
+    static delete = async (email) => {
+        try {
+            const result = await db('CrazyWeekEnd.users').where('email', email).del()
+            console.log(result)
+            return result
+        } catch (error) {
+            console.log(error)
+        }
     }
 }

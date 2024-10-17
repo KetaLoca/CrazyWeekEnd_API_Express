@@ -52,11 +52,13 @@ export class UserController {
 
     static delete = async (req, res) => {
         const { id } = req.params
-        const result = await UserModel.delete(id)
+        const result = await UserModel.getById(id)
         if (result) {
-            return res.json({ message: 'User deleted' })
+            await UserModel.delete(id)
+            return res.status(200).json({ message: 'User deleted' })
         }
-        res.json({ message: 'User not found' })
+
+        res.status(404).json({ message: 'User not found' })
     }
 
 }
