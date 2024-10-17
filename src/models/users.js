@@ -18,12 +18,7 @@ export class UserModel {
     }
 
     static delete = async (email) => {
-        try {
-            const result = await db('CrazyWeekEnd.users').where('email', email).del()
-            console.log(result)
-            return result
-        } catch (error) {
-            console.log(error)
-        }
+        const result = await db('CrazyWeekEnd.users').where('email', email).del()
+        return result
     }
 }
