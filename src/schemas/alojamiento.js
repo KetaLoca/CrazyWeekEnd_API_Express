@@ -1,4 +1,4 @@
-import z, { object } from 'zod'
+import z from 'zod'
 
 const alojamientoSchema = z.object({
     id: z.string().uuid(),
