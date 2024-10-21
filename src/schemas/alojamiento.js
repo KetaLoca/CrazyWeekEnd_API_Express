@@ -7,10 +7,7 @@ const alojamientoSchema = z.object({
     descripcion: z.string(),
     imgURL: z.array(z.string().url({ message: 'Debe ser una URL válida' })),
     animales: z.boolean(),
-    ubicacion: z.object({
-        lat: z.string(),
-        lng: z.string()
-    })
+    ubicacion: z.string()
 })
 
 export const validateAlojamiento = (object) => {

@@ -37,7 +37,7 @@ export class AlojamientosController {
         const alojamiento = await AlojamientosModel.getById(result.data.id)
         if (alojamiento) { return res.status(409).json({ message: 'El alojamiento ya existe' }) }
 
-        await AlojamientosModel.create(result)
+        await AlojamientosModel.create(result.data)
             .then(() => { return res.status(201).json(result) })
             .catch((e) => { return res.status(500).json({ message: 'Error añadiendo el alojamiento' }) })
     }
@@ -47,9 +47,8 @@ export class AlojamientosController {
         const alojamiento = await AlojamientosModel.getById(id)
         if (alojamiento) {
             await AlojamientosModel.delete(id)
-                .then(() => { return res.status(204).json({ message: 'Alojamiento eliminado correctamente' }) })
+                .then(() => { return res.status(200).json({ message: 'Alojamiento eliminado correctamente' }) })
                 .catch((e) => { return res.status(500).json({ message: 'Error eliminando el alojamiento' }) })
-        }
-        res.status(404).json({ message: 'El alojamiento que quiere eliminar no existe' })
+        } else res.status(404).json({ message: 'El alojamiento que quiere eliminar no existe' })
     }
 }

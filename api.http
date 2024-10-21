@@ -34,7 +34,7 @@ DELETE  http://localhost:3000/users/xesuspb@gmail.com
 GET http://localhost:3000/alojamientos
 
 ### Recuperar alojamiento por ID
-GET http://localhost:3000/alojamientos/aa2c255b-7637-49ce-90e0-bb2eb7687ed5
+GET http://localhost:3000/alojamientos/5c364fa6-1af2-419a-86d1-43adb0b11acd
 
 ### Recuperar alojamientos asociados a un usuario
 GET http://localhost:3000/alojamientos?userEmail=anfetas@gmail.com
@@ -52,8 +52,8 @@ Content-Type: application/json
         "https://ethic.es/wp-content/uploads/2023/03/imagen.jpg"
     ],
     "animales": false,
-    "ubicacion": {
-        "lat": "92",
-        "lng": "182"
-    }
+    "ubicacion": "(92, 189)"
 }
+
+### Eliminar un alojamiento
+DELETE http://localhost:3000/alojamientos/5c364fa6-1af2-419a-86d1-43adb0b11acd
