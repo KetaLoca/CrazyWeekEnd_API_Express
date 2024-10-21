@@ -1,4 +1,4 @@
-import z from 'zod'
+import z, { object } from 'zod'
 
 const alojamientoSchema = z.object({
     id: z.string().uuid(),
@@ -12,3 +12,11 @@ const alojamientoSchema = z.object({
         lng: z.string()
     })
 })
+
+export const validateAlojamiento = (object) => {
+    return alojamientoSchema.safeParse(object)
+}
+
+export const validatePartialAlojamiento = (object) => {
+    return alojamientoSchema.partial().safeParse(object)
+}
