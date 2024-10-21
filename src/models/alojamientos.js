@@ -2,19 +2,23 @@ import db from '../../knexDB.js'
 
 export class AlojamientosModel {
 
-    static getAll() {
+    static async getAll() {
 
     }
 
-    static getById() {
+    static async getByEmail(email) {
 
     }
 
-    static create() {
+    static async getById(id) {
 
     }
 
-    static delete() {
+    static async create(input) {
+
+    }
+
+    static async delete(id) {
 
     }
 }
