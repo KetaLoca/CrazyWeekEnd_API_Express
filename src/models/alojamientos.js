@@ -13,7 +13,7 @@ export class AlojamientosModel {
     }
 
     static async getById(id) {
-        const alojamiento = await db('CrazyWeekEnd.alojamientos').where('id', id).first.select('*')
+        const alojamiento = await db('CrazyWeekEnd.alojamientos').where('id', id).select('*')
         return alojamiento
     }
 

@@ -25,3 +25,35 @@ Content-Type: application/json
 
 ### eliminar usuario
 DELETE  http://localhost:3000/users/xesuspb@gmail.com
+
+
+
+
+
+### Recuperar alojamientos
+GET http://localhost:3000/alojamientos
+
+### Recuperar alojamiento por ID
+GET http://localhost:3000/alojamientos/aa2c255b-7637-49ce-90e0-bb2eb7687ed5
+
+### Recuperar alojamientos asociados a un usuario
+GET http://localhost:3000/alojamientos?userEmail=anfetas@gmail.com
+
+### Publicar un alojamiento
+POST http://localhost:3000/alojamientos
+Content-Type: application/json
+
+{
+    "id": "5c364fa6-1af2-419a-86d1-43adb0b11acd",
+    "nombre": "Locura máxima",
+    "userEmail": "xesuspb@gmail.com",
+    "descripcion": "Loqueando a tope",
+    "imgURL": [
+        "https://ethic.es/wp-content/uploads/2023/03/imagen.jpg"
+    ],
+    "animales": false,
+    "ubicacion": {
+        "lat": "92",
+        "lng": "182"
+    }
+}

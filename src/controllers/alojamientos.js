@@ -21,7 +21,7 @@ export class AlojamientosController {
 
     static async getAlojamientoById(req, res) {
         const { id } = req.params
-        const alojamiento = AlojamientosModel.getById(id)
+        const alojamiento = await AlojamientosModel.getById(id)
         if (alojamiento) {
             return res.status(200).json(alojamiento)
         }
