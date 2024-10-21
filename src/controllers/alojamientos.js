@@ -1,5 +1,5 @@
-import { AlojamientosModel } from "../models/alojamientos";
-import { validateAlojamiento, validatePartialAlojamiento } from "../schemas/alojamiento";
+import { AlojamientosModel } from "../models/alojamientos.js";
+import { validateAlojamiento, validatePartialAlojamiento } from "../schemas/alojamiento.js";
 
 export class AlojamientosController {
 
@@ -34,7 +34,7 @@ export class AlojamientosController {
             return res.status(404).json(result.error.message)
         }
 
-        const alojamiento = AlojamientosModel.getById(result.data.id)
+        const alojamiento = await AlojamientosModel.getById(result.data.id)
         if (alojamiento) { return res.status(409).json({ message: 'El alojamiento ya existe' }) }
 
         await AlojamientosModel.create(result)
@@ -43,6 +43,13 @@ export class AlojamientosController {
     }
 
     static async delete(req, res) {
-
+        const { id } = req.params
+        const alojamiento = await AlojamientosModel.getById(id)
+        if (alojamiento) {
+            await AlojamientosModel.delete(id)
+                .then(() => { return res.status(204).json({ message: 'Alojamiento eliminado correctamente' }) })
+                .catch((e) => { return res.status(500).json({ message: 'Error eliminando el alojamiento' }) })
+        }
+        res.status(404).json({ message: 'El alojamiento que quiere eliminar no existe' })
     }
 }
