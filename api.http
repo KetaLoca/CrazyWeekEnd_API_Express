@@ -62,13 +62,23 @@ DELETE http://localhost:3000/alojamientos/5c364fa6-1af2-419a-86d1-43adb0b11acd
 
 
 
+### Recuperar reserva por id
+GET http://localhost:3000/reservas/414e208b-d10e-483c-9fa4-10056933a9fb
+
 ### Recuperar reservas por email
-GET http://localhost:3000/reservas/xesuspb@gmail.com
+GET http://localhost:3000/reservas?email=xesuspb@gmail.com
 
 ### Añadir reserva
 POST http://localhost:3000/reservas/
 Content-Type: application/json
 
 {
-    
+    "id": "414e208b-d10e-483c-9fa4-10056933a9fb",
+    "userEmail": "xesuspb@gmail.com",
+    "alojamientoId": "df3f6537-c757-4420-862c-778be30ab5fc",
+    "fechaInicio": "Lunes",
+    "fechaFin": "Martes"
 }
+
+### Eliminar reserva
+DELETE http://localhost:3000/reservas/414e208b-d10e-483c-9fa4-10056933a9fb

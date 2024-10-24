@@ -5,8 +5,8 @@ export const reservasRouter = Router()
 
 reservasRouter.get("/:id", ReservasController.getById)
 
-reservasRouter.get("/:email", ReservasController.getByEmail)
+reservasRouter.get("/", ReservasController.getByEmail)
 
 reservasRouter.post("/", ReservasController.create)
 
-reservasRouter.delete(":id", ReservasController.delete)
+reservasRouter.delete("/:id", ReservasController.delete)
