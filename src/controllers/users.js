@@ -24,8 +24,10 @@ export class UserController {
         }
 
         await UserModel.create(result.data)
+            .then(() => { res.status(201).json(result.data) })
+            .catch((e) => { })
 
-        res.status(201).json(result.data)
+
     }
 
     static update = async (req, res) => {
