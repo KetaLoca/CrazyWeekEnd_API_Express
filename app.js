@@ -9,7 +9,10 @@ const app = express()
 app.disable("x-powered-by")
 
 app.use(json())
-app.use(cors())
+app.use(cors({
+    origin: 'http://localhost:3001/',
+    credentials: true
+}))
 
 app.use("/users", usersRouter)
 app.use("/alojamientos", alojamientosRouter)
