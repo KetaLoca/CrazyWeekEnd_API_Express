@@ -37,7 +37,7 @@ export class ReservasController {
         if (!reserva) {
             return res.status(404).json({ message: 'La reserva que desea eliminar no existe' })
         }
-        await ReservasModel.getById(id)
+        await ReservasModel.delete(id)
             .then(() => { return res.status(204) })
             .catch((e) => { return res.status(500).json({ message: 'Error eliminando la reserva' }) })
     }
