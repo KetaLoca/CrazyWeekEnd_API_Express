@@ -1,7 +1,9 @@
 import { Router } from "express";
-import { ReservasController } from "../controllers/reservas";
+import { ReservasController } from "../controllers/reservas.js";
 
 export const reservasRouter = Router()
+
+reservasRouter.get("/:id", ReservasController.getById)
 
 reservasRouter.get("/:email", ReservasController.getByEmail)
 

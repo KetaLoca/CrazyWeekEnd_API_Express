@@ -57,3 +57,18 @@ Content-Type: application/json
 
 ### Eliminar un alojamiento
 DELETE http://localhost:3000/alojamientos/5c364fa6-1af2-419a-86d1-43adb0b11acd
+
+
+
+
+
+### Recuperar reservas por email
+GET http://localhost:3000/reservas/xesuspb@gmail.com
+
+### Añadir reserva
+POST http://localhost:3000/reservas/
+Content-Type: application/json
+
+{
+    
+}

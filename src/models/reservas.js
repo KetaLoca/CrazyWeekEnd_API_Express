@@ -1,16 +1,20 @@
-import db from "../../knexDB";
+import db from "../../knexDB.js";
 
 export class ReservasModel {
 
-    static getByEmail(email) {
+    static async getById(id) {
 
     }
 
-    static create(input) {
+    static async getByEmail(email) {
 
     }
-    
-    static delete(id) {
+
+    static async create(input) {
+
+    }
+
+    static async delete(id) {
 
     }
 }
