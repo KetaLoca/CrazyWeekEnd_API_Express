@@ -5,7 +5,9 @@ export const usersRouter = Router()
 
 usersRouter.get("/:id", UserController.getById)
 
-usersRouter.post("/", UserController.create)
+usersRouter.post("/register", UserController.register)
+
+usersRouter.post("/login", UserController.login)
 
 usersRouter.patch("/:id", UserController.update)
 

@@ -1,5 +1,6 @@
 import { UserModel } from "../models/users.js";
 import { validateUser, validatePartialUser } from "../schemas/user.js";
+import bcrypt from 'bcrypt'
 
 export class UserController {
 
@@ -12,7 +13,7 @@ export class UserController {
         res.status(404).json({ message: 'User not found' })
     }
 
-    static create = async (req, res) => {
+    static register = async (req, res) => {
         const result = validateUser(req.body)
         if (result.error) {
             return res.status(400).json({ message: JSON.parse(result.error.message) })
@@ -23,10 +24,15 @@ export class UserController {
             return res.status(409).json({ message: 'User already exists' })
         }
 
+        result.data.password = await bcrypt.hash(result.data.password, 10)
         await UserModel.create(result.data)
             .then(() => { res.status(201).json(result.data) })
-            .catch((e) => { })
+            .catch((e) => { res.status(500).json({ message: 'Error registrando el usuario' }) })
 
+
+    }
+
+    static login = async (req, res) => {
 
     }
 

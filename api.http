@@ -1,8 +1,8 @@
 ### recuperar usuario por ID
 GET http://localhost:3000/users/xesuspb@gmail.com
 
-### postear usuario
-POST http://localhost:3000/users
+### Registrar usuario
+POST http://localhost:3000/users/register
 Content-Type: application/json
 
 {
