@@ -13,13 +13,21 @@ Content-Type: application/json
 "telefono": 647736793
 }
 
+### Login usuario
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+    "email": "xesuspb@gmail.com",
+    "password": "1234"
+}
+
 ### actualizar usuario
 PATCH http://localhost:3000/users/xesuspb@gmail.com
 Content-Type: application/json
 
 {
     "email": "xesuspb@gmail.com",
-    "password": "1234",
     "nombre": "Anfetas",
     "apellidos": "Cósmicas",
     "telefono": 231313123
