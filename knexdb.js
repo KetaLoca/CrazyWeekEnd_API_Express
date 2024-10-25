@@ -6,7 +6,7 @@ const db = knex({
         host: 'localhost',
         port: '5432',
         user: 'postgres',
-        password: '$Logitech321',
+        password: '1234',
         database: 'postgres',
         searchPath: ['CrazyWeekEnd']
     }

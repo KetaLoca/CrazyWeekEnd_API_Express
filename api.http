@@ -7,6 +7,7 @@ Content-Type: application/json
 
 {
 "email": "xesuspb@gmail.com",
+"password": "1234",
 "nombre": "Jesús",
 "apellidos": "Bañobre",
 "telefono": 647736793
@@ -18,6 +19,7 @@ Content-Type: application/json
 
 {
     "email": "xesuspb@gmail.com",
+    "password": "1234",
     "nombre": "Anfetas",
     "apellidos": "Cósmicas",
     "telefono": 231313123
