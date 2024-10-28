@@ -1,6 +1,8 @@
 import { UserModel } from "../models/users.js";
 import { validateUser, validatePartialUser } from "../schemas/user.js";
 import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
+import { SECRET_KEY } from "../../config.js";
 
 export class UserController {
 
@@ -45,6 +47,10 @@ export class UserController {
 
         const comprobar = await bcrypt.compare(password, user.password)
         if (comprobar) {
+            const token = jwt.sign({ email: user.email }, SECRET_KEY, { expiresIn: '1h' })
+
+            res.cookie('token', token, { httpOnly: true, maxAge: 60 * 60 * 1000 })
+
             return res.status(200).json({ message: 'Login correcto' })
         }
         res.status(401).json({ message: 'Password incorrecta' })

@@ -14,6 +14,7 @@ app.use(cors({
     origin: 'http://localhost:3001/',
     credentials: true
 }))
+app.use(cookieParser())
 
 app.use("/users", usersRouter)
 app.use("/alojamientos", alojamientosRouter)
