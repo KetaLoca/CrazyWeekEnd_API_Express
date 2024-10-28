@@ -12,6 +12,6 @@ usersRouter.post("/login", UserController.login)
 
 usersRouter.post("/logout", UserController.logout)
 
-usersRouter.patch("/:id", UserController.update)
+usersRouter.patch("/:id", authenticateToken, UserController.update)
 
-usersRouter.delete("/:id", UserController.delete)
+usersRouter.delete("/:id", authenticateToken, UserController.delete)
