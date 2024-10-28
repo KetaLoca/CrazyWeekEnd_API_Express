@@ -56,6 +56,11 @@ export class UserController {
         res.status(401).json({ message: 'Password incorrecta' })
     }
 
+    static logout = (req, res) => {
+        res.clearCookie('token')
+        res.status(200).json({ message: 'Sesión cerrada correctamente' })
+    }
+
     static update = async (req, res) => {
         const result = validatePartialUser(req.body)
         if (result.error) {
