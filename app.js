@@ -4,6 +4,7 @@ import { usersRouter } from "./src/routes/users.js"
 import { alojamientosRouter } from "./src/routes/alojamientos.js"
 import { reservasRouter } from "./src/routes/reservas.js"
 import { PORT } from "./config.js"
+import cookieParser from "cookie-parser"
 
 const app = express()
 app.disable("x-powered-by")

@@ -26,7 +26,7 @@ export class UserController {
 
         result.data.password = await bcrypt.hash(result.data.password, 10)
         await UserModel.create(result.data)
-            .then(() => { res.status(201).json(result.data) })
+            .then(() => { res.status(201).json(result.data.email) })
             .catch((e) => { res.status(500).json({ message: 'Error registrando el usuario' }) })
 
 
@@ -77,7 +77,8 @@ export class UserController {
         const result = await UserModel.getById(id)
         if (result) {
             await UserModel.delete(id)
-            return res.status(200).json({ message: 'User deleted' })
+                .then(() => { return res.status(200).json({ message: 'User deleted' }) })
+                .catch((e) => { return res.status(500).json({ message: 'Error deleting the user' }) })
         } else {
             res.status(404).json({ message: 'User not found' })
         }
