@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 import { SECRET_KEY } from '../../config'
 
-const authenticateToken = (req, res, next) => {
+export const authenticateToken = (req, res, next) => {
     const token = req.cookies.token
 
     if (!token) {
