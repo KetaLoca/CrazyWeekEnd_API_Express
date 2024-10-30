@@ -4,7 +4,9 @@ import { authenticateToken } from '../middlewares/auth.js'
 
 export const usersRouter = Router()
 
-usersRouter.get("/:id", authenticateToken, UserController.getById)
+usersRouter.get("/", authenticateToken, UserController.getById)
+
+usersRouter.get("/auth", authenticateToken, UserController.getAuth)
 
 usersRouter.post("/register", UserController.register)
 

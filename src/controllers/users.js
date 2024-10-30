@@ -7,12 +7,17 @@ import { SECRET_KEY } from "../../config.js";
 export class UserController {
 
     static getById = async (req, res) => {
-        const { id } = req.params
+        const id = req.user.email
         const user = await UserModel.getById(id)
         if (user) {
             return res.json(user)
         }
         res.status(404).json({ message: 'User not found' })
+    }
+
+    static getAuth = async (req, res) => {
+        const email = req.user.email
+        return res.status(200).json(email)
     }
 
     static register = async (req, res) => {
