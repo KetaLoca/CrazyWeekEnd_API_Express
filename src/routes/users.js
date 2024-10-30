@@ -12,7 +12,7 @@ usersRouter.post("/register", UserController.register)
 
 usersRouter.post("/login", UserController.login)
 
-usersRouter.post("/logout", UserController.logout)
+usersRouter.post("/logout", authenticateToken, UserController.logout)
 
 usersRouter.patch("/:id", authenticateToken, UserController.update)
 
