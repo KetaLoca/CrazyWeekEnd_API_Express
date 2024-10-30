@@ -73,6 +73,10 @@ export class UserController {
         }
 
         const { id } = req.params
+        if (id != req.user.email) {
+            return res.status(403).json({ message: 'Acceso no autorizado' })
+        }
+
         const comprobar = await UserModel.getById(id)
         if (!comprobar) {
             return res.status(404).json({ message: 'User not found' })
@@ -90,6 +94,10 @@ export class UserController {
 
     static delete = async (req, res) => {
         const { id } = req.params
+        if (id != req.user.email) {
+            return res.status(403).json({ message: 'Acceso no autorizado' })
+        }
+
         const result = await UserModel.getById(id)
         if (result) {
             await UserModel.delete(id)
