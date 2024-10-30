@@ -52,9 +52,9 @@ export class UserController {
 
         const comprobar = await bcrypt.compare(password, user.password)
         if (comprobar) {
-            const token = jwt.sign({ email: user.email }, SECRET_KEY, { expiresIn: '1h' })
+            const token = jwt.sign({ email: user.email }, SECRET_KEY)
 
-            res.cookie('token', token, { httpOnly: true, maxAge: 60 * 60 * 1000 })
+            res.cookie('token', token, { httpOnly: true })
 
             return res.status(200).json({ message: 'Login correcto' })
         }
