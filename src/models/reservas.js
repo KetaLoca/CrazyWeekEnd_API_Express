@@ -12,6 +12,11 @@ export class ReservasModel {
         return reservas
     }
 
+    static async getByAlojamiento(id) {
+        const reservas = await db("CrazyWeekEnd.reservas").where('alojamientoId', id).select('*')
+        return reservas
+    }
+
     static async create(input) {
         const result = await db("CrazyWeekEnd.reservas").insert(input).returning('*')
         return result

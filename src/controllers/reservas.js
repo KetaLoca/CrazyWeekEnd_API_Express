@@ -12,12 +12,22 @@ export class ReservasController {
         res.status(404).json({ message: 'No se ha podido recuperar la reserva' })
     }
 
-    static async getByEmail(req, res) {
-        const { email } = req.query
-        const reservas = await ReservasModel.getByEmail(email)
-        if (reservas.length != 0) {
-            return res.status(200).json(reservas)
+    static async getAll(req, res) {
+        const { email, alojamientoId } = req.query
+        if (email) {
+            const reservas = await ReservasModel.getByEmail(email)
+            if (reservas.length != 0) {
+                return res.status(200).json(reservas)
+            }
         }
+
+        if (alojamientoId) {
+            const reservas = await ReservasModel.getByAlojamiento(alojamientoId)
+            if (reservas.length != 0) {
+                return res.status(200).json(reservas)
+            }
+        }
+
         res.status(404).json({ message: 'No se encontraron reservas asociadas al usuario' })
     }
 

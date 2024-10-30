@@ -5,7 +5,7 @@ export const reservasRouter = Router()
 
 reservasRouter.get("/:id", ReservasController.getById)
 
-reservasRouter.get("/", ReservasController.getByEmail)
+reservasRouter.get("/", ReservasController.getAll)
 
 reservasRouter.post("/", ReservasController.create)
 
