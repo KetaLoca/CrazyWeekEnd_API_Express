@@ -13,17 +13,20 @@ export class ReservasController {
     }
 
     static async getAll(req, res) {
-        const { alojamientoId, email } = req.query
+        const result = validatePartialReserva(req.query)
+        if (result.error) {
+            return res.status(400).json({ message: 'Sólo se admiten userEmail o alojamientoId como parámetros' })
+        }
 
-        if (email) {
-            const reservas = await ReservasModel.getByEmail(email)
+        if (result.data.userEmail) {
+            const reservas = await ReservasModel.getByEmail(result.data.userEmail)
             if (reservas.length != 0) {
                 return res.status(200).json(reservas)
             }
         }
 
-        if (alojamientoId) {
-            const reservas = await ReservasModel.getByAlojamiento(alojamientoId)
+        if (result.data.alojamientoId) {
+            const reservas = await ReservasModel.getByAlojamiento(result.data.alojamientoId)
             if (reservas.length != 0) {
                 return res.status(200).json(reservas)
             }
