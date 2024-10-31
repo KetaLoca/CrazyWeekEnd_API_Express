@@ -13,7 +13,8 @@ export class ReservasController {
     }
 
     static async getAll(req, res) {
-        const { email, alojamientoId } = req.query
+        const { alojamientoId, email } = req.query
+
         if (email) {
             const reservas = await ReservasModel.getByEmail(email)
             if (reservas.length != 0) {
@@ -34,6 +35,7 @@ export class ReservasController {
     static async create(req, res) {
         const result = validateReserva(req.body)
         if (result.error) {
+            console.error(result.error.message)
             return res.status(400).json(JSON.parse(result.error.message))
         }
         await ReservasModel.create(result.data)
@@ -48,7 +50,7 @@ export class ReservasController {
             return res.status(404).json({ message: 'La reserva que desea eliminar no existe' })
         }
         await ReservasModel.delete(id)
-            .then(() => { return res.status(204) })
+            .then(() => { return res.status(200).json({ message: 'Reserva eliminada correctamente' }) })
             .catch((e) => { return res.status(500).json({ message: 'Error eliminando la reserva' }) })
     }
 }
