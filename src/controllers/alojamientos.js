@@ -31,6 +31,7 @@ export class AlojamientosController {
     static async create(req, res) {
         const result = validateAlojamiento(req.body)
         if (result.error) {
+            console.log(result.error.message)
             return res.status(404).json(result.error.message)
         }
 
@@ -39,7 +40,10 @@ export class AlojamientosController {
 
         await AlojamientosModel.create(result.data)
             .then(() => { return res.status(201).json(result) })
-            .catch((e) => { return res.status(500).json({ message: 'Error añadiendo el alojamiento' }) })
+            .catch((e) => {
+                console.log(e)
+                return res.status(500).json({ message: 'Error añadiendo el alojamiento' })
+            })
     }
 
     static async delete(req, res) {
