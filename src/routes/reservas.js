@@ -1,12 +1,13 @@
 import { Router } from "express";
 import { ReservasController } from "../controllers/reservas.js";
+import { authenticateToken } from '../middlewares/auth.js'
 
 export const reservasRouter = Router()
 
-reservasRouter.get("/:id", ReservasController.getById)
+reservasRouter.get("/:id", authenticateToken, ReservasController.getById)
 
-reservasRouter.get("/", ReservasController.getAll)
+reservasRouter.get("/", authenticateToken, ReservasController.getAll)
 
-reservasRouter.post("/", ReservasController.create)
+reservasRouter.post("/", authenticateToken, ReservasController.create)
 
-reservasRouter.delete("/:id", ReservasController.delete)
+reservasRouter.delete("/:id", authenticateToken, ReservasController.delete)
