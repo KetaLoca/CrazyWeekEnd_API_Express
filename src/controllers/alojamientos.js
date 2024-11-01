@@ -32,14 +32,18 @@ export class AlojamientosController {
         const result = validateAlojamiento(req.body)
         if (result.error) {
             console.log(result.error.message)
-            return res.status(404).json(result.error.message)
+            return res.status(400).json(result.error.message)
+        }
+
+        if (result.data.userEmail != req.user.email) {
+            return res.status(403).json({ message: 'No está autorizado' })
         }
 
         const alojamiento = await AlojamientosModel.getById(result.data.id)
         if (alojamiento) { return res.status(409).json({ message: 'El alojamiento ya existe' }) }
 
         await AlojamientosModel.create(result.data)
-            .then(() => { return res.status(201).json(result) })
+            .then(() => { return res.status(201).json({ message: 'Alojamiento añadido correctamente' }) })
             .catch((e) => {
                 console.log(e)
                 return res.status(500).json({ message: 'Error añadiendo el alojamiento' })
@@ -49,6 +53,11 @@ export class AlojamientosController {
     static async delete(req, res) {
         const { id } = req.params
         const alojamiento = await AlojamientosModel.getById(id)
+
+        if (alojamiento.userEmail != req.user.email) {
+            return res.status(403).json({ message: 'No tiene autorización' })
+        }
+
         if (alojamiento) {
             await AlojamientosModel.delete(id)
                 .then(() => { return res.status(200).json({ message: 'Alojamiento eliminado correctamente' }) })

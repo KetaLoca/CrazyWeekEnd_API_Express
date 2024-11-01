@@ -6,6 +6,11 @@ export class ReservasController {
     static async getById(req, res) {
         const { id } = req.params
         const reserva = await ReservasModel.getById(id)
+
+        if (reserva.userEmail != req.user.email) {
+            return res.status(403).json({ message: 'Acceso no autorizado' })
+        }
+
         if (reserva) {
             return res.status(200).json(reserva)
         }
@@ -18,7 +23,7 @@ export class ReservasController {
             return res.status(400).json({ message: 'Sólo se admiten userEmail o alojamientoId como parámetros' })
         }
 
-        if (result.data.userEmail) {
+        if (result.data.userEmail == req.user.email) {
             const reservas = await ReservasModel.getByEmail(result.data.userEmail)
             if (reservas.length != 0) {
                 return res.status(200).json(reservas)
@@ -41,6 +46,11 @@ export class ReservasController {
             console.error(result.error.message)
             return res.status(400).json(JSON.parse(result.error.message))
         }
+
+        if (result.data.userEmail != req.user.email) {
+            return res.status(403).json({ message: 'Acceso no autorizado' })
+        }
+
         await ReservasModel.create(result.data)
             .then(() => { return res.status(201).json(result.data) })
             .catch((e) => { console.log(e); return res.status(500).json({ message: 'Error añadiendo la reserva' }) })
@@ -52,6 +62,11 @@ export class ReservasController {
         if (!reserva) {
             return res.status(404).json({ message: 'La reserva que desea eliminar no existe' })
         }
+
+        if (reserva.userEmail != req.user.email) {
+            return res.status(403).json({ message: 'Acceso no autorizado' })
+        }
+
         await ReservasModel.delete(id)
             .then(() => { return res.status(200).json({ message: 'Reserva eliminada correctamente' }) })
             .catch((e) => { return res.status(500).json({ message: 'Error eliminando la reserva' }) })
