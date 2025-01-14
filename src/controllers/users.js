@@ -1,6 +1,6 @@
 import { UserModel } from "../models/users.js";
 import { validateUser, validatePartialUser } from "../schemas/user.js";
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import { SECRET_KEY } from "../../config.js";
 
