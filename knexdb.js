@@ -3,8 +3,8 @@ import knex from "knex";
 const db = knex({
     client: 'pg',
     connection: {
-        host: "host.docker.internal",
-        port: "5432",
+        host: "localhost",
+        port: "5433",
         user: "postgres",
         password: "1234",
         database: "postgres",
