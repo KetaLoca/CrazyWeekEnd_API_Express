@@ -14,7 +14,7 @@ app.disable("x-powered-by")
 
 app.use(json())
 app.use(cors({
-    origin: "http://frontend:3001",
+    origin: "http://localhost:3001",
     credentials: true
 }))
 app.use(cookieParser())
