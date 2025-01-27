@@ -14,7 +14,7 @@ app.disable("x-powered-by")
 
 app.use(json())
 app.use(cors({
-    origin: "http://frontend-service:3001",
+    origin: "https://crazyweekend570.jesuspb.dev",
     credentials: true
 }))
 app.use(cookieParser())
